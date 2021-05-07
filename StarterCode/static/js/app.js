@@ -54,29 +54,29 @@ console.log(`otuLabels: ${idOTU}`)
     Plotly.newPlot("bar", chartData, layout);
 });
 
-// // 3. Create a bubble chart that displays each sample.
-// var trace2 = {
-//     x: sampledata.samples[0].otu_ids,
-//     y: sampledata.samples[0].sample_values,
-//     mode: "markers",
-//     marker: {
-//         size: sampledata.samples[0].sample_values,
-//         color: sampledata.samples[0].otu_ids
-//     },
-//     text:  sampledata.samples[0].otu_labels
+//3. Create a bubble chart that displays each sample.
+var trace2 = {
+    x: sampledata.samples[0].otu_ids,
+    y: sampledata.samples[0].sample_values,
+    mode: "markers",
+    marker: {
+        size: sampledata.samples[0].sample_values,
+        color: sampledata.samples[0].otu_ids
+    },
+    text:  sampledata.samples[0].otu_labels
 
-// };
+};
 
-// // set the layout for the bubble plot
-// var layout2 = {
-//     xaxis:{title: "OTU ID"},
-//     height: 600,
-//     width: 1000
-// };
+// set the layout for the bubble plot
+var layout2 = {
+    xaxis:{title: "OTU ID"},
+    height: 600,
+    width: 1000
+};
 
-// // creating data variable 
-// var data2 = [trace2];
+// creating data variable 
+var data2 = [trace2];
 
-// // create the bubble plot
-// Plotly.newPlot("bubble", data2, layout2); 
+// create the bubble plot
+Plotly.newPlot("bubble", data2, layout2); 
 
