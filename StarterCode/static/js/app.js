@@ -18,16 +18,16 @@ d3.json("samples.json").then(sampledata => {
 
 var topOTU = (sampledata.samples[0].otu_ids.slice(0, 10)).reverse();
 var idOTU = topOTU.map(d => "OTU" + d);
-console.log(`OTU IDS: ${OTU_id}`)
+console.log(`OTU IDS: ${idOTU}`)
 // first 10 objects for plotting
 var otuLabels = sampledata.samples[0].otu_labels.slice(0,10);
-console.log(otuLabels: ${OTU_id})
+console.log(`otuLabels: ${idOTU}`)
 
 
 // create traces
     var trace1 = {
         x: sampleValues,
-        y: OTU_id,
+        y: idOTU,
         text: otuLabels,
         type: "bar",
         name: "otu_labels",
@@ -40,7 +40,7 @@ console.log(otuLabels: ${OTU_id})
     var layout = {
         title: "Top 10 Bacteria Cultures Found",
         yaxis: {
-        tickmode:"linear",
+            tickmode:"linear",
         },
         margin: {
             l: 100,
