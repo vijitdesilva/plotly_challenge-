@@ -1,13 +1,13 @@
 // 1. Use the D3 library to read in samples.json.
-// function createPlots(id) {
+function createPlots(id) {
 d3.json("samples.json").then(sampledata => {
- // console.log(sampledata)
+ console.log(sampledata)
  let ids = sampledata.samples[0].otu_ids;
- // console.log(ids)
+ console.log(ids)
  let sampleValues = sampledata.samples[0].sample_values.slice(0,10).reverse();
-//  console.log(sampleValues)
+ console.log(sampleValues)
  let otuLabels = sampledata.samples[0].otu_labels.slice(0,10);
- // console.log(otuLabels)
+ console.log(otuLabels)
 
 
 let topOTU = (sampledata.samples[0].otu_ids.slice(0, 10)).reverse();
