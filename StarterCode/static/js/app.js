@@ -1,31 +1,25 @@
 // 1. Use the D3 library to read in samples.json.
 // function createPlots(id) {
 d3.json("samples.json").then(sampledata => {
- console.log(sampledata)
- var ids = sampledata.samples[0].otu_ids;
- console.log(ids)
- var sampleValues = sampledata.samples[0].sample_values.slice(0,10).reverse();
- console.log(sampleValues)
- var otuLabels = sampledata.samples[0].otu_labels.slice(0,10);
- console.log(otuLabels)
+ // console.log(sampledata)
+ let ids = sampledata.samples[0].otu_ids;
+ // console.log(ids)
+ let sampleValues = sampledata.samples[0].sample_values.slice(0,10).reverse();
+//  console.log(sampleValues)
+ let otuLabels = sampledata.samples[0].otu_labels.slice(0,10);
+ // console.log(otuLabels)
 
-// create variable 
-// var otuData = sampledata;
 
-// sampleValues.sort(function(a, b) {
-//         return parseFloat(b.sampledata.samples.sample_values) - parseFloat(a.sampledata.samples.sample_values);
-//     });
-
-var topOTU = (sampledata.samples[0].otu_ids.slice(0, 10)).reverse();
-var idOTU = topOTU.map(d => "OTU" + d);
+let topOTU = (sampledata.samples[0].otu_ids.slice(0, 10)).reverse();
+let idOTU = topOTU.map(d => "OTU" + d);
 console.log(`OTU IDS: ${idOTU}`)
 // first 10 objects for plotting
-var otuLabels = sampledata.samples[0].otu_labels.slice(0,10);
+let otuLabels = sampledata.samples[0].otu_labels.slice(0,10);
 console.log(`otuLabels: ${idOTU}`)
 
 
 // create traces
-    var trace1 = {
+    let trace1 = {
         x: sampleValues,
         y: idOTU,
         text: otuLabels,
@@ -34,10 +28,10 @@ console.log(`otuLabels: ${idOTU}`)
         orientation: "h",
     };
 // Create the data array for the plot
-    var chartData = [trace1];
+    let chartData = [trace1];
 
  // Define the plot layout
-    var layout = {
+    let layout = {
         title: "Top 10 Bacteria Cultures Found",
         yaxis: {
             tickmode:"linear",
@@ -52,10 +46,10 @@ console.log(`otuLabels: ${idOTU}`)
 
 // Plot the chart to a div tag with id "bar"
     Plotly.newPlot("bar", chartData, layout);
-});
+
 
 //3. Create a bubble chart that displays each sample.
-var trace2 = {
+let trace2 = {
     x: sampledata.samples[0].otu_ids,
     y: sampledata.samples[0].sample_values,
     mode: "markers",
@@ -68,15 +62,29 @@ var trace2 = {
 };
 
 // set the layout for the bubble plot
-var layout2 = {
+let layout2 = {
     xaxis:{title: "OTU ID"},
     height: 600,
     width: 1000
 };
 
 // creating data variable 
-var data2 = [trace2];
+let chartData2 = [trace2];
 
 // create the bubble plot
-Plotly.newPlot("bubble", data2, layout2); 
+Plotly.newPlot("bubble", chartData2, layout2); 
+});
+
+// 4. Display the sample metadata, i.e., an individual's demographic information.
+// function demoData(id) {
+//     d3.json("samples.json").then(demographics => {
+//         let metaData = demographics.metadata;
+//         // console.log(metaData)
+//         let search = metaData.filter(meta => meta.id.toString() === id)[0];
+//         let demo = d3.select("#sample_metadata");
+
+//         demo.html("");
+
+//     }
+// }
 
