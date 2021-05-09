@@ -98,7 +98,7 @@ function createPlots(id) {
     
          // grab the necessary demographic data data for the id and append the info to the panel
             Object.entries(result).forEach((key) => {   
-                demoInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");    
+                demoInfo.append("h5").text(key[0].toLowerCase() + ": " + key[1] + "\n");    
             });
         });
     }
