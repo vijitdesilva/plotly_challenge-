@@ -6,7 +6,7 @@ function createPlots(id) {
             //console.log(ids)
             var sampleValues =  sampledata.samples[0].sample_values.slice(0,10).reverse();
             //console.log(sampleValues)
-            var labels =  sampledata.samples[0].otu_labels.slice(0,10);
+            var OTUlabels =  sampledata.samples[0].otu_labels.slice(0,10);
             //console.log (labels)
         // get only top 10 otu ids for the plot OTU and reversing it. 
             var OTUtop = ( sampledata.samples[0].otu_ids.slice(0, 10)).reverse();
@@ -15,7 +15,7 @@ function createPlots(id) {
             //console.log(`OTU IDS: ${OTUid}`)
          // 2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
             var labels =  sampledata.samples[0].otu_labels.slice(0,10);
-            console.log(`OTU_labels: ${labels}`)
+            console.log(`OTU_labels: ${OTUlabels}`)
             var trace1 = {
                 x: sampleValues,
                 y: OTUid,
