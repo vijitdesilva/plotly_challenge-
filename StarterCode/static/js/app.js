@@ -1,5 +1,6 @@
 function createPlots(id) {
-    //1. Use the D3 library to read in samples.json
+    
+//1. Use the D3 library to read in samples.json
         d3.json("samples.json").then (sampledata =>{
             //console.log(sampledata)
             var ids = sampledata.samples[0].otu_ids;
@@ -13,13 +14,15 @@ function createPlots(id) {
         // get the otu id's to the desired form for the plot
             var OTUid = OTUtop.map(d => "OTU " + d);
             //console.log(`OTU IDS: ${OTUid}`)
-         // 2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
-            var labels =  sampledata.samples[0].otu_labels.slice(0,10);
+
+
+ // 2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
+            var OTUlabels =  sampledata.samples[0].otu_labels.slice(0,10);
             console.log(`OTU_labels: ${OTUlabels}`)
             var trace1 = {
                 x: sampleValues,
                 y: OTUid,
-                text: labels,
+                text: OTUlabels,
                 marker: {
                 color: 'grayblue'},
                 type:"bar",
