@@ -102,15 +102,15 @@ function createPlots(id) {
             });
         });
     }
-    // create the function for the change event
+    //  change event
     function optionChanged(id) {
         createPlots(id);
         getDemo(id);
     }
     
-    // create the function for the initial data rendering
+    //  initial data rendering
     function init() {
-        // select dropdown menu 
+        // dropdown menu 
         var dropdown = d3.select("#selDataset");
     
         // read the data 
