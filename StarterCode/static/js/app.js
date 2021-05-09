@@ -90,13 +90,13 @@ function createPlots(id) {
     
           // filter meta data info by id
            var result = metadata.filter(meta => meta.id.toString() === id)[0];
-          // select demographic panel to put data
+          // demographic panel to put data
            var demoInfo = d3.select("#sample-metadata");
             
-         // empty the demographic info panel each time before getting new id info
+         // empty the demographic info panel each time 
            demoInfo.html("");
     
-         // grab the necessary demographic data data for the id and append the info to the panel
+         // grab the necessary demographic data data for the id and append the info panel
             Object.entries(result).forEach((key) => {   
                 demoInfo.append("h5").text(key[0].toLowerCase() + ": " + key[1] + "\n");    
             });
