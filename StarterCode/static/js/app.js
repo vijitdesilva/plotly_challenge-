@@ -2,7 +2,7 @@ function createPlots(id) {
     //1.Use the D3 library to read in samples.json.
         d3.json("samples.json").then (sampledata =>{
             //console.log(sampledata) -> Variable checked in console 
-            var ids = sampledata.samples[0].otu_ids;
+            // var ids = sampledata.samples[0].otu_ids;
             //console.log(ids) -> Variable checked in console 
             var sampleValues =  sampledata.samples[0].sample_values.slice(0,10).reverse();
             //console.log(sampleValues) -> Variable checked in console 
@@ -10,12 +10,12 @@ function createPlots(id) {
             //console.log (labels) -> Variable checked in console 
 
     // 2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
-        // get only top 10 otu ids for the plot OTU and reversing it. 
+        // filter top 10 otu ids for the plot OTU and reversing it. 
             var OTU_top = ( sampledata.samples[0].otu_ids.slice(0, 10)).reverse();
-        // get the otu id's to the desired form for the plot
+        // otu id's to the desired form for the plot
             var OTU_id = OTU_top.map(d => "OTU " + d);
             //console.log(`OTU IDS: ${OTU_id}`) -> Variable checked in console 
-         // get the top 10 labels for the plot
+         // top 10 labels for the plot
             var labels =  sampledata.samples[0].otu_labels.slice(0,10);
             console.log(`OTU_labels: ${labels}`)
             var trace = {
@@ -30,7 +30,7 @@ function createPlots(id) {
             // create data variable
             var data = [trace];
     
-            // create layout variable to set plots layout
+            // create layout variable for br chart 
             var layout = {
                 title: "Top 10 Bacterial Cultures Found",
                 yaxis:{
@@ -46,7 +46,8 @@ function createPlots(id) {
     
             // create the bar plot
         Plotly.newPlot("bar", data, layout);
-            // The bubble chart
+
+// 2. Create a bubble chart that displays each sample.
             var trace2 = {
                 x: sampledata.samples[0].otu_ids,
                 y: sampledata.samples[0].sample_values,
@@ -75,7 +76,10 @@ function createPlots(id) {
         
         });
     }  
-    // create the function to get the necessary data
+// 4. Display the sample metadata, i.e., an individual's demographic information.
+
+
+// 5. Display each key-value pair from the metadata JSON object somewhere on the page.
     function getDemo(id) {
     // read the json file to get data
         d3.json("samples.json").then((data)=> {
@@ -87,14 +91,14 @@ function createPlots(id) {
           // filter meta data info by id
            var result = metadata.filter(meta => meta.id.toString() === id)[0];
           // select demographic panel to put data
-           var demographicInfo = d3.select("#sample-metadata");
+           var demoInfo = d3.select("#sample-metadata");
             
          // empty the demographic info panel each time before getting new id info
-           demographicInfo.html("");
+           demoInfo.html("");
     
          // grab the necessary demographic data data for the id and append the info to the panel
             Object.entries(result).forEach((key) => {   
-                demographicInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");    
+                demoInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");    
             });
         });
     }
