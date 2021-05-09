@@ -96,7 +96,7 @@ function createPlots(id) {
          // empty the demographic info panel each time 
            demoInfo.html("");
     
-         // grab the necessary demographic data data for the id and append the info panel
+         // demographic data data for the id and append the info panel
             Object.entries(result).forEach((key) => {   
                 demoInfo.append("h5").text(key[0].toLowerCase() + ": " + key[1] + "\n");    
             });
